@@ -1,0 +1,263 @@
+---- config
+title: Acmeism and Pegex.pm
+indent: 5
+auto_size: 1
+skip: 0
+
+---- center
+Acmeism and Pegex.pm
++(and C'Dent and TestML)
++(and ActiveState and Stackato)
++(PairUp! and ...)
+
++by Ingy döt Net
+
+NY.pm
+
+Thurs, June 28, 2012
+
+----
+== Ingy döt Net
+
+* 100+ CPAN modules
+
+* Inline - write Perl in 25 other langs
+* YAML - Serialize data nicely in many langs
+* Jemplate - JS ♥'s TT2
+* pQuery - Perl ♥'s jQuery
+
+----
+== Languages Don't Matter
+
++* Languages separate people
+  * Artificially!
++* People do matter!
+* Ideas matter!
++* Ideas can save people
+* Don't let language stop that
+
++* I call this idea: "Acmeism"
+
+    http://acmeism.org
+
+----
+== The Goals of Acmeism
+
+* Bring communities together by Sharing Ideas
+  * In ways that trancend languages
+* Not limited to programming
+
+----
+== Polyglot
+
+* Polyglot is a new term in programming
+* It means "many languages"
+
+* Polyglots use multiple languages
+* Acmeists *help* multiple languages at once
+
+* Shibuya.pm "polyglot" is more interesting
+
+----
+== Ingy's Acmeist Goals
+
+* Publish 1000 modules in 20 programming languages
+  * CPAN, PyPI, RubyGems, PEAR, etc
+* Every module is is hacked once, published everwhere
+  * H.O.P.E.
+* Need 4 things for this goal:
+  * Acmeist Code
+  * Acmeist Tests
+  * Acmeist Doc
+  * Acmeist Packaging
+
+----
+== Ingy's Acmeist Projects
+
+* I have projects for 3 of the above:
+  * C'Dent - HOPEful Programming Language
+  * TestML - Acmeist Test Framework
+  * Stardoc - HOPEful Doc Framework
+
+* Also, a project that drives them all:
+  * Pegex: Perl6-like grammar engine
+
+----
+== Ingy's More Reasonable Acmeist Goals
+
+    YAML2!!
+
+* Redo the whole YAML project
+* New smaller spec
+  * YAML 2.0 spec
+  * Subset of 1.2 spec
+* One definitive parser grammar
+  * Written in Pegex
+* One definitive test suite
+  * Written in TestML
+
+----
+== What's wrong with YAML?
+
+* YAML is great, but
+* Spec is too big
+  * Many unused features
+* Many incompatible implementations
+* Perl implementations have very crufty API
+  * Load/Dump is simple but beyond that is a mess
+* YAML is used for simple things
+  * Was designed for complex
+
+----
+== The YAML Stack
+
+Loader Stack        Memory Representation         Dumper Stack
+==============================================================
+      Loader                                      Dumper
+               \                              /
+                  (Native Perl Data/Objects)
+               /                              \
+ Constructor                                      Representer
+               \                              /
+                       (YAML Node Graph)
+               /                              \
+    Composer      <-->     Resolver     <-->      Serializer
+               \                              /
+                       (YAML Event Tree)
+               /                              \
+      Parser                                      Emitter
+               \                              /
+                      (YAML Token Stream)
+               /                              /
+     Scanner
+               \                              /
+                    (YAML Character Stream)
+               /                              \
+      Reader                                      Writer
+               \                              /
+                 (YAML String or File Handle)
+
+----
+== JSYNC
+
+* There are only 3 differences between YAML & JSON
+  * References
+  * Tags
+  * Keys
+* JSYNC is full serialization using JSON
+* Use existing JSON implementations
+* http://jsync.org
+* JSYNC.pm
+
+* Why?
+  * Get the API right, then use it for YAML2!
+
+----
+== ActiveState
+
+* Open Source for Enterprise since 1997
+  * Perl on Windows
+* MO is Package Quality Open Source for Enterprise Use
+  * Ease of Use, Documentation, Core Enhancements, Support
+* Primary products are:
+  * ActivePerl, ActivePython, ActiveTcl, Komodo IDE
+  * Bottled Water - Perl, Python, Tcl, Mozilla
+* Stackato - Enterprise Private PaaS
+  * Cloud Foundry + AS MO
+  * Started last year, Released Feb 29, 2012
+
+----
+== What is PaaS?
+
+* Platform as a Service
+* Abstract platform for running apps
+* Simply `push` your code and it runs
+* Often on top of IaaS - EC2, HPCS, OpenStack
+* Heroku, dotCloud - Public PaaS
+* Stackato - Private PaaS
+
+----
+== Simple Demo
+
+* git clone https://github.com/Stackato-Apps/multisweeper.git
+* cd multisweeper
+* stackato target api.stacka.to
+* stackato login ingy@activestate.com
+* stackato push yapcsweeper
+
+----
+== MicroCloud
+
+* Stackato runs whereever you want it
+* Even on your laptop
+  * VirtualBox
+  * VMware - VMplayer/Fusion
+* "MicroCloud" is ActiveState's Free License
+  * Free of charge for single node usage
+* Show local MicroCloud
+
+----
+== One line MicroCloud install!
+
+      curl get.stackato.com/microcloud | bash
+
+* Don't run this here!
+  * See me for a usb copy
+  * Come to Stackato Workshop on Friday
+
++* stackato.com is a Stackato VM
+* get is a Stackato app :)
+
+----
+== Stackato Management Console
+
+* The `stackato` client uses a REST API to the CC
+  * stackato <cmd> -t
+* So does the Stackato Management Console
+  * Pure JavaScript app to control your stackato
+
+    SMC Demo
+
+----
+== Stackato App Store
+
+* One click install of popular apps
+* Not really a "store" . No $$$ required
+* Really simple design: JSON and Git Repos
+* Make your own store with a gist
+
+    Store creation demo
+
+----
+== Security
+
+* LXC Containers
+  * Every app runs in it's own container
+  * Can't affect the host system
+  * Hard limits on resources
+  * Kernel level
+
+    > ssh stackato@your-vm
+    > stackato ssh your-running-app
+
+----
+== PairUp!™
+
+* Ingy's new app that does nothing
+* LXC + User Groups == instant pair programming
+* Find people on irc and program with them
+
+    PairUp! demo
+
+----
+== Let's PairUp!
+
+* ...
+* C'Dent
+* Pegex
+* TestML
+* Devel::Local
+* Nick Patch!!
+
+----
+== The End
