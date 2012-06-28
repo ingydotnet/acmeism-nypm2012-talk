@@ -181,9 +181,9 @@ Loader Stack        Memory Representation         Dumper Stack
 
 * git clone https://github.com/Stackato-Apps/multisweeper.git
 * cd multisweeper
-* stackato target api.stacka.to
-* stackato login ingy@activestate.com
-* stackato push yapcsweeper
+* stackato target api.hacktive.org
+* stackato login ny@pm.org (nynyny)
+* stackato push
 
 ----
 == MicroCloud
